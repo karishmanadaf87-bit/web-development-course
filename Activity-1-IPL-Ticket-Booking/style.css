@@ -1,0 +1,298 @@
+
+/* Basic Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* Navigation */
+header {
+    background-color: black;
+    color: white;
+    padding: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav h2 {
+    color: #168cff;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #168cff;
+}
+
+/* Hero Section */
+#home {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 40px 20px 60px;
+}
+
+.hero-logo {
+    width: 280px;
+    max-width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto 15px;
+}
+
+#home h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+#home p {
+    margin-bottom: 25px;
+    color: #ccc;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #087cff;
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    margin: 5px;
+    border-radius: 6px;
+}
+
+.btn:hover {
+    background-color: #0053ad;
+}
+
+/* Common Sections */
+section {
+    padding: 45px 8%;
+}
+
+section h2 {
+    text-align: center;
+    color: #101b3f;
+    margin-bottom: 25px;
+}
+
+section h3 {
+    margin: 15px 0;
+}
+
+/* About Section */
+#about {
+    background-color: white;
+}
+
+#about p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#about ul {
+    margin-left: 30px;
+}
+
+/* Match Schedule */
+#matches {
+    background-color: #eef1f8;
+}
+
+#teamFilter {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 700px;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #101b3f;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #eee;
+}
+
+td a {
+    background-color: #087cff;
+    color: white;
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+/* Booking Section */
+#booking {
+    background-color: white;
+}
+
+.booking-container {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+form {
+    flex: 2;
+    min-width: 250px;
+    background-color: #f4f6fa;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #087cff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Summary Card */
+.summary-card {
+    flex: 1;
+    min-width: 220px;
+    background-color: #101b3f;
+    color: white;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.summary-card h3 {
+    color: #4da3ff;
+    margin-bottom: 15px;
+}
+
+.summary-card p {
+    margin-bottom: 12px;
+}
+
+/* My Bookings */
+#mybookings {
+    background-color: #eef1f8;
+}
+
+/* Guidelines */
+#guidelines {
+    background-color: white;
+}
+
+.guidelines-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.guideline-card {
+    flex: 1;
+    min-width: 200px;
+    padding: 20px;
+    background-color: #eef1f8;
+    border-left: 5px solid #087cff;
+    border-radius: 6px;
+}
+
+/* Footer */
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    #home h1 {
+        font-size: 26px;
+    }
+
+    .booking-container {
+        flex-direction: column;
+    }
+
+    form,
+    .summary-card {
+        width: 100%;
+    }
+
+    .guidelines-container {
+        flex-direction: column;
+    }
+
+    section {
+        padding: 30px 5%;
+    }
+}
