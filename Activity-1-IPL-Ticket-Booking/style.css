@@ -302,3 +302,14 @@ form input[type="radio"] {
     display: inline-block;
     margin-right: 8px;
 }
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #1e3a8a;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    z-index: 1000;
+}
