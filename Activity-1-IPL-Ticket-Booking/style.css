@@ -296,3 +296,9 @@ footer {
         padding: 30px 5%;
     }
 }
+
+form input[type="radio"] {
+    width: auto;
+    display: inline-block;
+    margin-right: 8px;
+}

@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Ticket Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <h2>IPL 2026</h2>
+            <a href="index.html">Home</a>
+            <a href="booking.html">Book Ticket</a>
+        </nav>
+    </header>
+
+    <h1>IPL Ticket Booking Form</h1>
+
+    <form>
+
+        <label>Name:</label>
+        <input type="text" name="name" required
+               minlength="3" maxlength="30">
+
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Phone Number:</label>
+        <input type="tel" name="phone"
+               pattern="[0-9]{10}" required>
+
+        <label>Select Match:</label>
+        <select name="match" required>
+            <option value="">Choose Match</option>
+            <option>RCB vs CSK</option>
+            <option>MI vs KKR</option>
+            <option>RCB vs MI</option>
+        </select>
+
+        <label>Stand Category:</label>
+        <select name="stand" required>
+            <option value="">Choose Stand</option>
+            <option>General</option>
+            <option>Premium</option>
+            <option>VIP</option>
+        </select>
+
+        <label>Number of Tickets:</label>
+        <input type="number" name="tickets"
+               min="1" max="10" required>
+
+        <p>Food Preference:</p>
+
+        <input type="radio" name="food" value="Yes">
+        Food Included
+
+        <input type="radio" name="food" value="No">
+        No Food
+
+        <br><br>
+
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+
+    </form>
+
+</body>
+</html>
