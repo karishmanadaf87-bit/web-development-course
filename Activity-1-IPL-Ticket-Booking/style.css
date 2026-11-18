@@ -1,5 +1,8 @@
 
-/* Basic Styling */
+/* ========================================
+   BASIC STYLING
+======================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +20,11 @@ body {
     line-height: 1.6;
 }
 
-/* Navigation */
+
+/* ========================================
+   NAVIGATION
+======================================== */
+
 header {
     background-color: black;
     color: white;
@@ -51,7 +58,11 @@ nav a:hover {
     color: #168cff;
 }
 
-/* Hero Section */
+
+/* ========================================
+   HERO SECTION
+======================================== */
+
 #home {
     background-color: black;
     color: white;
@@ -91,7 +102,11 @@ nav a:hover {
     background-color: #0053ad;
 }
 
-/* Common Sections */
+
+/* ========================================
+   COMMON SECTIONS
+======================================== */
+
 section {
     padding: 45px 8%;
 }
@@ -106,7 +121,11 @@ section h3 {
     margin: 15px 0;
 }
 
-/* About Section */
+
+/* ========================================
+   ABOUT SECTION
+======================================== */
+
 #about {
     background-color: white;
 }
@@ -120,7 +139,11 @@ section h3 {
     margin-left: 30px;
 }
 
-/* Match Schedule */
+
+/* ========================================
+   MATCH SCHEDULE
+======================================== */
+
 #matches {
     background-color: #eef1f8;
 }
@@ -142,7 +165,8 @@ table {
     background-color: white;
 }
 
-th, td {
+th,
+td {
     border: 1px solid #ddd;
     padding: 12px;
     text-align: center;
@@ -165,9 +189,20 @@ td a {
     border-radius: 4px;
 }
 
-/* Booking Section */
-#booking {
+
+/* ========================================
+   BOOKING PAGE
+======================================== */
+
+#bookingPage {
     background-color: white;
+    min-height: 75vh;
+}
+
+#bookingPage h1 {
+    text-align: center;
+    color: #101b3f;
+    margin-bottom: 30px;
 }
 
 .booking-container {
@@ -175,11 +210,18 @@ td a {
     gap: 25px;
     flex-wrap: wrap;
     align-items: flex-start;
+    max-width: 1100px;
+    margin: auto;
 }
+
+
+/* ========================================
+   BOOKING FORM
+======================================== */
 
 form {
     flex: 2;
-    min-width: 250px;
+    min-width: 280px;
     background-color: #f4f6fa;
     padding: 25px;
     border-radius: 8px;
@@ -191,13 +233,20 @@ form label {
     font-weight: bold;
 }
 
-form input,
+form input:not([type="radio"]),
 form select {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 15px;
+}
+
+form input:focus,
+form select:focus {
+    outline: none;
+    border-color: #087cff;
 }
 
 form button {
@@ -207,33 +256,98 @@ form button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 5px 5px 5px 0;
 }
 
-/* Summary Card */
+form button:hover {
+    background-color: #0053ad;
+}
+
+.reset-btn {
+    background-color: #555;
+}
+
+.reset-btn:hover {
+    background-color: #333;
+}
+
+
+/* ========================================
+   FOOD PREFERENCE
+======================================== */
+
+.food-heading {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: normal;
+}
+
+.radio-group input[type="radio"] {
+    width: auto;
+    margin: 0;
+}
+
+
+/* ========================================
+   BOOKING SUMMARY CARD
+======================================== */
+
 .summary-card {
     flex: 1;
-    min-width: 220px;
+    min-width: 230px;
     background-color: #101b3f;
     color: white;
     padding: 25px;
     border-radius: 8px;
 }
 
+.summary-card h2 {
+    color: #4da3ff;
+    margin-bottom: 20px;
+}
+
 .summary-card h3 {
     color: #4da3ff;
-    margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 .summary-card p {
-    margin-bottom: 12px;
+    margin-bottom: 15px;
+    overflow-wrap: anywhere;
 }
 
-/* My Bookings */
+.summary-card hr {
+    border: 1px solid #526080;
+    margin: 15px 0;
+}
+
+
+/* ========================================
+   MY BOOKINGS
+======================================== */
+
 #mybookings {
     background-color: #eef1f8;
 }
 
-/* Guidelines */
+
+/* ========================================
+   GUIDELINES
+======================================== */
+
 #guidelines {
     background-color: white;
 }
@@ -253,7 +367,11 @@ form button {
     border-radius: 6px;
 }
 
-/* Footer */
+
+/* ========================================
+   FOOTER
+======================================== */
+
 footer {
     background-color: black;
     color: white;
@@ -261,7 +379,43 @@ footer {
     padding: 20px;
 }
 
-/* Responsive Design */
+
+/* ========================================
+   TOAST NOTIFICATION
+======================================== */
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #1e3a8a;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: toastAnimation 0.3s ease;
+}
+
+@keyframes toastAnimation {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
 @media (max-width: 768px) {
 
     nav {
@@ -295,21 +449,11 @@ footer {
     section {
         padding: 30px 5%;
     }
-}
 
-form input[type="radio"] {
-    width: auto;
-    display: inline-block;
-    margin-right: 8px;
-}
+    .toast {
+        left: 15px;
+        right: 15px;
+        text-align: center;
+    }
 
-.toast {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #1e3a8a;
-    color: white;
-    padding: 15px 25px;
-    border-radius: 5px;
-    z-index: 1000;
 }
