@@ -1,38 +1,44 @@
 
-// ========================================
-// TEAM FILTER
-// ========================================
+/* ========================================
+   ACTIVITY 7 & 8: TEAM FILTER
+======================================== */
 
-// Select Team Filter
 const teamFilter = document.getElementById("teamFilter");
 
-// Select all match table rows
-const rows = document.querySelectorAll("#matchTable tr");
+const matchCards = document.querySelectorAll(".match-card");
 
-// Check whether Team Filter exists
+const noMatches = document.getElementById("noMatches");
+
 if (teamFilter) {
 
-    // Add change event listener
-    teamFilter.addEventListener("change", function() {
+    teamFilter.addEventListener("change", function () {
 
-        let team = teamFilter.value;
+        const selectedTeam = teamFilter.value;
 
-        // Check every match row
-        for (let i = 0; i < rows.length; i++) {
+        let visibleMatches = 0;
 
-            let match = rows[i].cells[1].textContent;
+        matchCards.forEach(function (card) {
 
-            // Display matching teams
-            if (team === "All" || match.includes(team)) {
+            const teams = card.dataset.teams.split(" ");
 
-                rows[i].style.display = "";
+            if (
+                selectedTeam === "All" ||
+                teams.includes(selectedTeam)
+            ) {
+
+                card.hidden = false;
+                visibleMatches++;
 
             } else {
 
-                rows[i].style.display = "none";
+                card.hidden = true;
 
             }
 
+        });
+
+        if (noMatches) {
+            noMatches.hidden = visibleMatches !== 0;
         }
 
     });

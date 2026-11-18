@@ -1,7 +1,7 @@
 
-// ========================================
-// ACTIVITY 5: TOAST NOTIFICATION
-// ========================================
+/* ========================================
+   ACTIVITY 5: TOAST NOTIFICATION
+======================================== */
 
 function showToast(message) {
 
@@ -12,32 +12,28 @@ function showToast(message) {
 
     document.body.appendChild(toast);
 
-    setTimeout(function() {
+    setTimeout(function () {
         toast.remove();
     }, 3000);
 
 }
 
 
-// ========================================
-// ACTIVITY 5: BOOKING PAGE NAVIGATION
-// ========================================
+/* ========================================
+   ACTIVITY 5: BOOKING PAGE NAVIGATION
+======================================== */
 
-// Select all Book Ticket links
 let bookButtons = document.querySelectorAll(".booking-link");
 
-// Add click event to each Book Ticket link
-bookButtons.forEach(function(button) {
+bookButtons.forEach(function (button) {
 
-    button.addEventListener("click", function(event) {
+    button.addEventListener("click", function (event) {
 
         event.preventDefault();
 
-        // Display toast message
         showToast("Opening booking page!");
 
-        // Open booking.html after 1 second
-        setTimeout(function() {
+        setTimeout(function () {
 
             window.location.href = button.href;
 
@@ -48,19 +44,93 @@ bookButtons.forEach(function(button) {
 });
 
 
-// ========================================
-// ACTIVITY 7: BOOKING SUMMARY
-// ========================================
+/* ========================================
+   ACTIVITY 8: MOBILE HAMBURGER MENU
+======================================== */
 
-// Select booking form using querySelector
+const menuToggle = document.getElementById("menuToggle");
+
+const navLinks = document.getElementById("navLinks");
+
+if (menuToggle && navLinks) {
+
+    menuToggle.addEventListener("click", function () {
+
+        navLinks.classList.toggle("open");
+
+        const isOpen = navLinks.classList.contains("open");
+
+        menuToggle.setAttribute("aria-expanded", isOpen);
+
+        menuToggle.innerText = isOpen ? "✕" : "☰";
+
+    });
+
+    // Close menu after selecting a navigation link
+    navLinks.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            navLinks.classList.remove("open");
+
+            menuToggle.setAttribute("aria-expanded", "false");
+
+            menuToggle.innerText = "☰";
+
+        });
+
+    });
+
+}
+
+
+/* ========================================
+   ACTIVITY 8: GRID / LIST VIEW
+======================================== */
+
+const matchGrid = document.getElementById("matchGrid");
+
+const gridView = document.getElementById("gridView");
+
+const listView = document.getElementById("listView");
+
+if (matchGrid && gridView && listView) {
+
+    gridView.addEventListener("click", function () {
+
+        matchGrid.classList.remove("list-view");
+
+        gridView.classList.add("active-view");
+
+        listView.classList.remove("active-view");
+
+    });
+
+    listView.addEventListener("click", function () {
+
+        matchGrid.classList.add("list-view");
+
+        listView.classList.add("active-view");
+
+        gridView.classList.remove("active-view");
+
+    });
+
+}
+
+
+/* ========================================
+   ACTIVITY 7: BOOKING SUMMARY
+======================================== */
+
 const bookingForm = document.querySelector("#bookingForm");
 
-// Select form controls using getElementById
 const match = document.getElementById("match");
+
 const stand = document.getElementById("stand");
+
 const quantity = document.getElementById("quantity");
 
-// Check whether booking form exists
 if (bookingForm && match && stand && quantity) {
 
     // Ticket prices for each match and stand
@@ -97,12 +167,13 @@ if (bookingForm && match && stand && quantity) {
     function updateSummary() {
 
         let selectedMatch = match.value;
+
         let selectedStand = stand.value;
+
         let tickets = Number(quantity.value);
 
         let price = 0;
 
-        // Get ticket price
         if (
             selectedMatch !== "" &&
             selectedStand !== "" &&
@@ -132,7 +203,6 @@ if (bookingForm && match && stand && quantity) {
         document.getElementById("summaryTotal").innerText =
             total;
 
-        // Show confirmation toast
         showToast("Booking summary updated successfully!");
 
     }
@@ -149,9 +219,9 @@ if (bookingForm && match && stand && quantity) {
 
 
     // Reset summary when form is reset
-    bookingForm.addEventListener("reset", function() {
+    bookingForm.addEventListener("reset", function () {
 
-        setTimeout(function() {
+        setTimeout(function () {
 
             document.getElementById("summaryMatch").innerText =
                 "Not Selected";
@@ -171,9 +241,8 @@ if (bookingForm && match && stand && quantity) {
 
 
     // Handle form submission
-    bookingForm.addEventListener("submit", function(event) {
+    bookingForm.addEventListener("submit", function (event) {
 
-        // Prevent page reload
         event.preventDefault();
 
         showToast("Your booking details are valid!");
