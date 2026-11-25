@@ -1,32 +1,53 @@
+import { useState, useEffect, useCallback } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import MatchCard from "./components/MatchCard";
+import { supabase } from "./supabase";
 import "./App.css";
 
 function App() {
-  const matches = [
-    {
-      id: 1,
-      team1: "RCB",
-      team2: "MI",
-      date: "25 March 2026",
-      venue: "Bengaluru",
-    },
-    {
-      id: 2,
-      team1: "CSK",
-      team2: "KKR",
-      date: "26 March 2026",
-      venue: "Chennai",
-    },
-    {
-      id: 3,
-      team1: "SRH",
-      team2: "RR",
-      date: "27 March 2026",
-      venue: "Hyderabad",
-    },
-  ];
+  const [matches, setMatches] = useState([]);
+
+  const fetchMatches = useCallback(async () => {
+    const { data, error } = await supabase
+      .from("matches")
+      .select("*");
+
+    if (error) {
+      console.error("Fetch error:", error.message);
+      return;
+    }
+
+    console.log("Matches fetched:", data);
+    setMatches(data || []);
+  }, []);
+
+  useEffect(() => {
+    // Fetch matches when page loads
+    fetchMatches();
+
+    // Realtime subscription for database changes
+    const channel = supabase
+      .channel("matches-realtime")
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "matches",
+        },
+        (payload) => {
+          console.log("Realtime update:", payload);
+          fetchMatches();
+        }
+      )
+      .subscribe();
+
+    // Cleanup subscription
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [fetchMatches]);
 
   return (
     <>
@@ -39,10 +60,13 @@ function App() {
         {matches.map((match) => (
           <MatchCard
             key={match.id}
+            id={match.id}
             team1={match.team1}
             team2={match.team2}
-            date={match.date}
+            date={match.match_date || match.date}
             venue={match.venue}
+            available_seats={match.available_seats}
+            onBookingSuccess={fetchMatches}
           />
         ))}
       </div>
